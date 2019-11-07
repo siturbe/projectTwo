@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const connection = require("../config/connection.js");
 const axios = require("axios");
 const matchday = require("./whichMatchDay");
+require('dotenv').config();
 
 let Option = connection.define("currentOption",{
     matchday: Sequelize.STRING,
@@ -13,9 +14,7 @@ let Option = connection.define("currentOption",{
 });
 
 Option.truncate();
-// connection.get("/", function(req,res){
 
-// })
 
 connection.sync().then(function(){
     axios({
@@ -24,7 +23,7 @@ connection.sync().then(function(){
         "headers":{
         "content-type":"application/octet-stream",
         "x-rapidapi-host":"heisenbug-premier-league-live-scores-v1.p.rapidapi.com",
-        "x-rapidapi-key":"e4bd1d4763mshbadb182061cbec8p14ada1jsna099cc6dbfa1"
+        "x-rapidapi-key": "e4bd1d4763mshbadb182061cbec8p14ada1jsna099cc6dbfa1"
         },"params":{
         "matchday": matchday
         }
