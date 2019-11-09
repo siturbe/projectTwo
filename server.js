@@ -15,7 +15,7 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
 // Set Handlebars, but need to change to PUG
 app.set("view engine", "pug");
