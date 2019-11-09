@@ -18,12 +18,12 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Handlebars
-app.engine(
-  "pug",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
+// app.engine(
+//   "pug",
+//   exphbs({
+//     defaultLayout: "main"
+//   })
+// );
 app.set("view engine", "pug");
 
 // Routes
