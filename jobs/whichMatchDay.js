@@ -62,7 +62,7 @@ for(let i=0; i<weekCompleteDates.length; i++){
 }
 
 let matchday = String(datesNotPassed[1]);
-console.log(matchday);
+console.log("matchday=" + matchday);
 
 module.exports = matchday;
 

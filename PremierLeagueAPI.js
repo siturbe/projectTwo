@@ -1,14 +1,14 @@
 //File used to populate data of games that already happened
-
+require('dotenv').config();
 const axios = require("axios");
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-  host: "localhost",
+  host: process.env.MYSQL_HOST2,
   port: 3306,
-  user: 'root',
-  password: 'password',
-  database: 'premierLeague_db'
+  user: process.env.MYSQL_USER2,
+  password: process.env.MYSQL_KEY2,
+  database: process.env.MYSQL_DBNAME2
 });
 
 connection.connect(function(err){
@@ -18,7 +18,7 @@ connection.connect(function(err){
 
 
 let allMatches=[];
-let matchday="38";
+let matchday="10";
 
 function getMatchDay(){
   axios({
@@ -26,8 +26,8 @@ function getMatchDay(){
     "url":"https://heisenbug-premier-league-live-scores-v1.p.rapidapi.com/api/premierleague",
     "headers":{
     "content-type":"application/octet-stream",
-    "x-rapidapi-host":"heisenbug-premier-league-live-scores-v1.p.rapidapi.com",
-    "x-rapidapi-key":"e4bd1d4763mshbadb182061cbec8p14ada1jsna099cc6dbfa1"
+    "x-rapidapi-host": process.env.API_HOST,
+    "x-rapidapi-key": process.env.API_KEY
     },"params":{
     "matchday": matchday
     }
@@ -37,7 +37,7 @@ function getMatchDay(){
       // console.log(response.data.matches[1].when)
       // console.log(response.data.matches[1].team1)
       for( let i=0; i<response.data.matches.length; i++){
-        connection.query("INSERT INTO matchestest SET ?", 
+        connection.query("INSERT INTO matches SET ?", 
           {
             matchday: matchday,
             date: response.data.matches[i].when,

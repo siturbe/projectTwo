@@ -1,19 +1,14 @@
-const Sequelize = require("sequelize");
-const connection = require("../config/connection.js");
-
-let Match = connection.define("match",{
-    matchday: Sequelize.STRING,
-    date: Sequelize.STRING,
-    team1: Sequelize.STRING,
-    team1score: Sequelize.INTEGER,
-    team2: Sequelize.STRING,
-    team2score: Sequelize.INTEGER,
-});
-
-Match.sync();
-
-module.exports = Match;
-
+module.exports = function(sequelize, DataTypes) {
+    let match = sequelize.define("match",{
+        matchday: DataTypes.STRING,
+        date: DataTypes.STRING,
+        team1: DataTypes.STRING,
+        team1score: DataTypes.INTEGER,
+        team2: DataTypes.STRING,
+        team2score: DataTypes.INTEGER,
+    });
+    return match;
+}
 
 
 

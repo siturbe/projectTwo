@@ -1,19 +1,31 @@
-var express = require("express");
-var router = express.Router();
-
+var jobs = require("../jobs");
 var db = require("../models");
 
-module.exports = function(router){
+module.exports = function(app){
     //Create all routes and set up the logic of those routes where required
     //Route to display home page
-    router.get("/", function(req,res){
-        db.all(function(data){
-            var hbsObject = {
-                matches: data
-            };
-            res.render("index", hbsObject);
-        });
-    });
+    app.get("/", function(req,res) {
+        //First update tables from API
+        res.render("index");
+        console.log(db.match);
+        jobs.lastWeek();
+        jobs.options();
+        jobs.matchDays();
+        
+        })
+        // jobs.matchDays;
+        // jobs.lastWeek;
+        // jobs.options;
+
+        // db.all(function(data){
+        //     var hbsObject = {
+        //         matches: data
+        //     };
+        //     res.render("index", hbsObject);
+        // });
+        //Code to populate the options table
+
+    };
 
     //route to display login
 
@@ -28,8 +40,8 @@ module.exports = function(router){
 
     //route to display results of choices post matches
 
-    router.post("/api/matches", function (req,res){
-        matches.create([""])
-    })
+    // router.post("/api/matches", function (req,res){
+    //     matches.create([""])
+    // })
 
-}
+
