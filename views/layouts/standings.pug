@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Standings</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Standings</th>
+            </tr>
+            <tr>
+                <th>User Name</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyTable">
+
+        </tbody>
+        <!-- append tr -->
+    </table>
+<script>
+    user = [{name:'sai',
+            points:23},
+            {name:'aj',
+            points: 30}];
+
+
+    for(let i = 0; i<user.length; i++){
+        let a = $('<tr></tr>');
+        let b = $('<td id="userName">'+user[i].name+'</td>');
+        let c = $('<td id="points">'+user[i].points+'</td>');
+
+        a.append(b);
+        a.append(c);
+        $('#tbodyTable').append(a);
+
+    }
+</script>
+    
+</body>
+</html>
