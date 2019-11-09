@@ -1,7 +1,9 @@
 require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+var path = require("path");
+const pug = require('pug');
+// var exphbs = require("express-handlebars");
 var axios = require("axios");
 
 var db = require("./models");
@@ -16,8 +18,8 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Set Handlebars, but need to change to PUG
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
-app.set("view engine", "handlebars");
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
 // Routes
 require("./controllers/controller.js")(app);
