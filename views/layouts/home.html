@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", rel="stylesheet">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <link rel="stylesheet", href="/assets/css/login.css">
+        <Title> Premier League Pick'Em Registration</Title>
+    </head>
+
+    <body>
+        <div id='container' class="container-fluid col-md-8 offset-md-2">
+                <div id="banner" class='container-fluid col-md-8 offset-md-2'>Premier League Pick'Em</div>
+                <div class="wrapper fadeInDown">
+                        <div id="formContent">
+                          <!-- Tabs Titles -->
+                      
+                          <!-- Icon -->
+                          <div class="fadeIn first">
+                            <img src="/assets/images/PremierLeagueLogo.jpg" id="icon" alt="User Icon" />
+                          </div>
+                      
+                          <!-- Login Form -->
+                          <form action="" method="POST" role="form">
+                            <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+                            <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
+                            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+                          </form>
+                          <br>
+                          <a href="/standings" class="btn btn-primary" id="registerBtn">Register</a>
+                          <a href="/standings.html" class="btn btn-primary" id="loginBtn">Login</a>
+                      
+                        </div>
+                      </div>
+        </div>
+        <script src="/assets/js/loginFront.js"></script>
+    </body>
+
+</html>

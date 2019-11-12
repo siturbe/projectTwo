@@ -18,7 +18,7 @@ connection.connect(function(err){
 
 
 let allMatches=[];
-let matchday="10";
+let matchday="11";
 
 function getMatchDay(){
   axios({
@@ -47,6 +47,7 @@ function getMatchDay(){
             team2score: response.data.matches[i].team2.teamScore,
           },
           function(err, response){
+            if(err){console.log(err)};
             console.log(response.affectedRows + " matches inserted.\n");
           }
         )
