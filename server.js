@@ -15,7 +15,7 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
 // Handlebars
 // app.engine(
@@ -41,7 +41,7 @@ require("./controllers/controller.js")(app);
 
 // Starting the server, syncing our models ------------------------------------/
 
-  db.sequelize.sync({}).then(function() {
+  db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
