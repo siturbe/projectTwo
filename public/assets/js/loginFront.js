@@ -1,4 +1,5 @@
-let currentUser;//global variable of current user
+let currentUserGlobal;
+
 //Code to register new user
 $("#registerBtn").on("click", function (event){
     event.preventDefault();
@@ -25,12 +26,14 @@ $("#registerBtn").on("click", function (event){
             }
     
             console.log(username);
-            currentUser = $("#username").val();
+            let currentUser = $("#username").val();
+            // currentUserGlobal = currentUser;
+            localStorage.setItem('PLPickUser', currentUser);
             $.post("/api/newUser", username)
                 .then(function(data){
                     console.log(data);
                 })
-            
+            window.location.assign(href='/standings');
                 
             
         } else {
@@ -42,11 +45,13 @@ $("#registerBtn").on("click", function (event){
             }
     
             console.log(username);
-            
+            let currentUser = $("#username").val();
+            localStorage.setItem('PLPickUser', currentUser);
             $.post("/api/newUser", username)
                 .then(function(data){
                     console.log(data);
                 })
+            window.location.assign(href='/standings');
                 
         }
     })  
@@ -68,6 +73,8 @@ $("#loginBtn").on("click", function (event){
             if(data[i].name==currentUser){
                 if(data[i].password == passwordForTest){
                     console.log("Successful Login");
+                    localStorage.setItem('PLPickUser', currentUser);
+                    window.location.assign(href='/standings');
                 } else {
                     confirm("That combination of username and password is incorrect");
                     document.location.reload();
@@ -79,8 +86,4 @@ $("#loginBtn").on("click", function (event){
     })  
 
 })
-
-
-
-
 

@@ -1,5 +1,8 @@
 //code to populate table
 
+let currentUser = 'test1'  //NEED TO MAKE THIS GLOBAL.  USING THIS HARDCODE FOR CONTINUING BUILDOUT
+console.log(currentUser);
+
 $('#startPickBtn').on("click", function(event){
     event.preventDefault();
 

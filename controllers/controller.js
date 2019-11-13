@@ -14,6 +14,11 @@ module.exports = function(app){
         
         })
 
+        app.get("/logout", function(req,res) {
+            res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
+            
+            })
+
     app.get("/api/standings", function(req,res){
         db.standings.findAll({
             order: [["points", "DESC"]]
@@ -26,6 +31,7 @@ module.exports = function(app){
         res.sendFile(path.join(__dirname, "../views/layouts/standings.html"));
     })
 
+    //APIs so that user can pick games of the week
     app.get("/pickGames", function(req, res){
         jobs.options();
         res.sendFile(path.join(__dirname, "../views/layouts/pickGames.html"));
@@ -49,6 +55,16 @@ module.exports = function(app){
             res.json(results);
         })
     });
+    //APIs used to calculate points
+    app.get('/api/getPicks', function(req, res){
+        db.picks.findAll()
+        .then(function(results){
+            res.json(results);
+        })
+    })
+
+
+
 
     app.get("/api/users", function(req, res){
         db.users.findAll()
