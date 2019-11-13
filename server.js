@@ -17,9 +17,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-// Set Handlebars, but need to change to PUG
+// Handlebars
+// app.engine(
+//   "pug",
+//   exphbs({
+//     defaultLayout: "main"
+//   })
+// );
 app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
 
 // Routes
 require("./controllers/controller.js")(app);
