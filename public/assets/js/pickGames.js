@@ -1,6 +1,6 @@
 //code to populate table
 
-let currentUser = 'test1'  //NEED TO MAKE THIS GLOBAL.  USING THIS HARDCODE FOR CONTINUING BUILDOUT
+let currentUser = localStorage.getItem('PLPickUser');
 console.log(currentUser);
 
 $('#startPickBtn').on("click", function(event){
@@ -93,7 +93,7 @@ $('#startPickBtn').on("click", function(event){
                         console.log(data);
                         console.log('Posted pick to SQL')
                     })
-
+                window.location.assign(href='/standings');
             })
 
         })
@@ -106,7 +106,13 @@ $('#startPickBtn').on("click", function(event){
 })
 
 
+$('#logoutBtn').on('click', function(event){
+    event.preventDefault();
 
+    localStorage.removeItem('PLPickUser');
+    window.location.assign(href='/');
+
+})
 
     
 

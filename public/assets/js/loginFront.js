@@ -1,4 +1,4 @@
-let currentUserGlobal;
+
 
 //Code to register new user
 $("#registerBtn").on("click", function (event){
