@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Welcome to Premier League Pick'Em
+
+        // Choice to Sign In
+        form(action='/login')
+          button.btn.btn-primary(type='submit') Sign In
+
+        // Choice to Register
+        form(action='/register')
+          button.btn.btn-primary(type='submit') Register
+
+        button.btn.btn-primary(id="testJava") Test
+
