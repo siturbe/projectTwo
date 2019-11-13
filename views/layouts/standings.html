@@ -77,8 +77,23 @@
                         </div>
                       </div>
         </div>
-        <script src="/assets/js/loginFront.js"></script>
-        <script src="/assets/js/standingsFront.js"></script>
+        <!-- <script src="/assets/js/loginFront.js"></script>
+        <script src="/assets/js/standingsFront.js"></script> -->
+        <!-- <script src="/assets/js/calculatePoints.js.js"></script> -->
+
+        <script>
+            function loadScripts(sources) {
+                sources.forEach(src => {
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.async = false; //<-- the important part
+                    document.body.appendChild( script ); //<-- make sure to append to body instead of head 
+                });
+            }
+
+            loadScripts(['/assets/js/loginFront.js','/assets/js/standingsFront.js','/assets/js/calculatePoints.js'])
+        </script>
+
     </body>
 
 </html>

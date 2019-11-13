@@ -38,6 +38,7 @@ module.exports = function(app){
     })
 
     app.post('/api/pickGames', function(req,res){
+        jobs.lastWeek();
         db.picks.create({
             user: req.body.user,
             matchDay: req.body.matchday,
@@ -57,13 +58,20 @@ module.exports = function(app){
     });
     //APIs used to calculate points
     app.get('/api/getPicks', function(req, res){
+        jobs.options();
         db.picks.findAll()
         .then(function(results){
             res.json(results);
         })
     })
 
-
+    //API to get scores by team
+    app.get('/api/getScores',function(req, res){
+        db.lastweek.findAll()
+        .then(function(results){
+            res.json(results);
+        })
+    })
 
 
     app.get("/api/users", function(req, res){
