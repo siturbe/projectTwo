@@ -38,6 +38,7 @@ module.exports = function(app){
     })
 
     app.post('/api/pickGames', function(req,res){
+        jobs.lastWeek();
         db.picks.create({
             user: req.body.user,
             matchDay: req.body.matchday,
@@ -57,13 +58,53 @@ module.exports = function(app){
     });
     //APIs used to calculate points
     app.get('/api/getPicks', function(req, res){
+        jobs.options();
         db.picks.findAll()
         .then(function(results){
             res.json(results);
         })
     })
 
+    //API to delete picks
+    app.delete("/api/deletePicks", function(req, res){
+        db.picks.destroy({ truncate: true })
+        .then(function(){
+            res.status(204).end();
+        })
+    })
 
+    app.post('/api/compileResults',function(req,res){
+        db.results.create({
+            user: req.body.user,
+            matchDay: req.body.matchDay,
+            pick1: req.body.pick1,
+            pick1points: req.body.pick1points,
+            pick2: req.body.pick2,
+            pick2points: req.body.pick2points,
+            pick3: req.body.pick3,
+            pick3points: req.body.pick3points,
+            totalPoints: req.body.totalPoints,
+        }).then(function(result){
+            res.json(result);
+        });
+    })
+
+    //API to get cumulative results to create standings
+    app.get("/api/pickResults", function(req, res){
+        db.results.findAll()
+        .then(function(results){
+            res.json(results);
+        })
+    })
+
+
+    //API to get scores by team
+    app.get('/api/getScores', function(req, res){
+        db.lastweek.findAll()
+        .then(function(results){
+            res.json(results);
+        })
+    })
 
 
     app.get("/api/users", function(req, res){

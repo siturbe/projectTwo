@@ -12,7 +12,7 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#"><img src="/assets/images/LogoHead.jpg" id="icon2" alt="Navbar"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -69,16 +69,40 @@
                       
                           <!-- Standings Table -->
                           <div class="fadeIn second" id="standingsTable">
-                              <h3>Season Rankings</h3>
-                              <h4>User Name         Points</h4>
-                              
+                              <h5>Select 'Pick Games' to Continue</h5>
+                              <h3>Season Rankings</h3>    
                           </div>
-                      
+                          <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Player</th>
+                                    <th scope="col">Points</th>
+                                </tr>
+                            </thead>
+                            <tbody id="standingsTableBody">
+
+                            </tbody>
+                            
+                        </table>
+
+
                         </div>
                       </div>
         </div>
-        <script src="/assets/js/loginFront.js"></script>
-        <script src="/assets/js/standingsFront.js"></script>
+
+        <script>
+            function loadScripts(sources) {
+                sources.forEach(src => {
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.async = false; //<-- the important part
+                    document.body.appendChild( script ); //<-- remember to append to body instead of head 
+                });
+            }
+
+            loadScripts(['/assets/js/calculatePoints.js','/assets/js/standingsFront.js']);
+        </script>
+
     </body>
 
 </html>

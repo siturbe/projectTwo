@@ -106,6 +106,8 @@ $('#startPickBtn').on("click", function(event){
 })
 
 
+
+
 $('#logoutBtn').on('click', function(event){
     event.preventDefault();
 
