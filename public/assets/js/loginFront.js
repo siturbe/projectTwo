@@ -32,8 +32,9 @@ $("#registerBtn").on("click", function (event){
             $.post("/api/newUser", username)
                 .then(function(data){
                     console.log(data);
+                    window.location.assign(href='/standings');
                 })
-            window.location.assign(href='/standings');
+            
                 
             
         } else {
@@ -50,8 +51,9 @@ $("#registerBtn").on("click", function (event){
             $.post("/api/newUser", username)
                 .then(function(data){
                     console.log(data);
+                    window.location.assign(href='/standings');
                 })
-            window.location.assign(href='/standings');
+            
                 
         }
     })  
