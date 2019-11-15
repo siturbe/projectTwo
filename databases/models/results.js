@@ -8,8 +8,6 @@ module.exports = function(sequelize, DataTypes) {
         pick2points: DataTypes.INTEGER,
         pick3: DataTypes.STRING,
         pick3points: DataTypes.INTEGER,
-        totalPoints: DataTypes.INTEGER,
     });
-
   return results;
   }

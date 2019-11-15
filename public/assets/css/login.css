@@ -268,3 +268,8 @@ html {
     font-size: 36px;
     text-align: center;
   }
+
+  #icon2 {
+    height: 50px;
+    width: auto;
+  }
