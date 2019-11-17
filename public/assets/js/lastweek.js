@@ -43,7 +43,7 @@ $.get('/api/points/' + currentUser, function(data){
 
     let tableRowTotal = $('<tr/>')
         .appendTo($('#pointsTableBody'))
-    let TDtotal = $('<td> TOTOAL </td>')
+    let TDtotal = $('<td> TOTAL </td>')
         .appendTo(tableRowTotal)
     let TDtotPoints = $('<td>' + seasonPoints +'</td>')
         .appendTo(tableRowTotal)
