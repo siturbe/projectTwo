@@ -18,22 +18,22 @@ $("#registerBtn").on("click", function (event){
                 }
             }
 
-            console.log("Name is good to use"); 
-            let username = {
-                name: $("#username").val(),
-                email: $("#email").val(),
-                password: $("#password").val(),
-            }
+            // console.log("Name is good to use"); 
+            // let username = {
+            //     name: $("#username").val(),
+            //     email: $("#email").val(),
+            //     password: $("#password").val(),
+            // }
     
-            console.log(username);
-            let currentUser = $("#username").val();
-            // currentUserGlobal = currentUser;
-            localStorage.setItem('PLPickUser', currentUser);
-            $.post("/api/newUser", username)
-                .then(function(data){
-                    console.log(data);
-                    window.location.assign(href='/standings');
-                })
+            // console.log(username);
+            // let currentUser = $("#username").val();
+            // // currentUserGlobal = currentUser;
+            // localStorage.setItem('PLPickUser', currentUser);
+            // $.post("/api/newUser", username)
+            //     .then(function(data){
+            //         console.log(data);
+            //         window.location.assign(href='/standings');
+            //     })
             
                 
             

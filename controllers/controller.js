@@ -1,6 +1,7 @@
 var jobs = require("../jobs");
 var db = require("../models");
 var path = require("path");
+let matchday = require("../jobs/whichMatchDay");
 
 module.exports = function(app){
     //Create all routes and set up the logic of those routes where required
@@ -14,10 +15,16 @@ module.exports = function(app){
         
         })
 
-        app.get("/logout", function(req,res) {
+    app.get("/logout", function(req,res) {
             res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
             
-            })
+        })
+
+    app.get("/lastWeek", function(req,res) {
+            res.sendFile(path.join(__dirname, "../views/layouts/lastWeek.html"));
+            
+        })
+    
 
     app.get("/api/standings", function(req,res){
         db.standings.findAll({
@@ -126,7 +133,17 @@ module.exports = function(app){
         })
     })
 
-    //route to display login
+    //route to make user table in points
+    app.get("/api/points/:user", function(req, res){
+        db.results.findAll({
+            where: {
+                user: req.params.user,
+            }
+        })
+        .then(function(results){
+            res.json(results);
+        })
+    })
 
 
     //route to register a new user
