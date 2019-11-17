@@ -1,6 +1,7 @@
 var jobs = require("../jobs");
 var db = require("../models");
 var path = require("path");
+let matchday = require("../jobs/whichMatchDay");
 
 module.exports = function(app){
     //Create all routes and set up the logic of those routes where required
@@ -14,10 +15,16 @@ module.exports = function(app){
         
         })
 
-        app.get("/logout", function(req,res) {
+    app.get("/logout", function(req,res) {
             res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
             
-            })
+        })
+
+    app.get("/lastWeek", function(req,res) {
+            res.sendFile(path.join(__dirname, "../views/layouts/lastWeek.html"));
+            
+        })
+    
 
     app.get("/api/standings", function(req,res){
         db.standings.findAll({
@@ -65,8 +72,41 @@ module.exports = function(app){
         })
     })
 
+    //API to delete picks
+    app.delete("/api/deletePicks", function(req, res){
+        db.picks.destroy({ truncate: true })
+        .then(function(){
+            res.status(204).end();
+        })
+    })
+
+    app.post('/api/compileResults',function(req,res){
+        db.results.create({
+            user: req.body.user,
+            matchDay: req.body.matchDay,
+            pick1: req.body.pick1,
+            pick1points: req.body.pick1points,
+            pick2: req.body.pick2,
+            pick2points: req.body.pick2points,
+            pick3: req.body.pick3,
+            pick3points: req.body.pick3points,
+            totalPoints: req.body.totalPoints,
+        }).then(function(result){
+            res.json(result);
+        });
+    })
+
+    //API to get cumulative results to create standings
+    app.get("/api/pickResults", function(req, res){
+        db.results.findAll()
+        .then(function(results){
+            res.json(results);
+        })
+    })
+
+
     //API to get scores by team
-    app.get('/api/getScores',function(req, res){
+    app.get('/api/getScores', function(req, res){
         db.lastweek.findAll()
         .then(function(results){
             res.json(results);
@@ -93,7 +133,17 @@ module.exports = function(app){
         })
     })
 
-    //route to display login
+    //route to make user table in points
+    app.get("/api/points/:user", function(req, res){
+        db.results.findAll({
+            where: {
+                user: req.params.user,
+            }
+        })
+        .then(function(results){
+            res.json(results);
+        })
+    })
 
 
     //route to register a new user

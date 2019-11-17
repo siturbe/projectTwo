@@ -12,7 +12,7 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#"><img src="/assets/images/LogoHead.jpg" id="icon2" alt="Navbar"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -97,8 +97,21 @@
                         </div>
                       </div>
         </div>
-        <script src="/assets/js/loginFront.js"></script>
-        <script src="/assets/js/pickGames.js"></script>
+        <!-- <script src="/assets/js/pickGames.js"></script> -->
+
+        <script>
+            function loadScripts(sources) {
+                sources.forEach(src => {
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.async = false; //<-- the important part
+                    document.body.appendChild( script ); //<-- remember to append to body instead of head 
+                });
+            }
+
+            loadScripts(['/assets/js/deadline.js', '/assets/js/checkPicks.js', '/assets/js/pickGames.js']);
+        </script>
+
     </body>
 
 </html>

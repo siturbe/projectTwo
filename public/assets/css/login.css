@@ -269,6 +269,13 @@ html {
     text-align: center;
   }
 
+
+  #icon2 {
+    height: 50px;
+    width: auto;
+  }
+
+
   input[type=password] {
     background-color: #f6f6f6;
     border: none;
