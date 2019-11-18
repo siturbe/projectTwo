@@ -1,23 +1,30 @@
 var jobs = require("../jobs");
 var db = require("../models");
 var path = require("path");
+let matchday = require("../jobs/whichMatchDay");
 
 module.exports = function(app){
     //Create all routes and set up the logic of those routes where required
     let currentUserID;
     //Route to display home page
     app.get("/", function(req,res) {
-        res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
+        res.render(path.join(__dirname, "../views/layouts/home.pug"));
         // jobs.lastWeek();
         // jobs.options();
         // jobs.matchDays();
         
         })
 
-        app.get("/logout", function(req,res) {
-            res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
+    app.get("/logout", function(req,res) {
+            res.render(path.join(__dirname, "../views/layouts/home.pug"));
             
-            })
+        })
+
+    app.get("/lastWeek", function(req,res) {
+            res.render(path.join(__dirname, "../views/layouts/lastWeek.pug"));
+            
+        })
+    
 
     app.get("/api/standings", function(req,res){
         db.standings.findAll({
@@ -28,13 +35,17 @@ module.exports = function(app){
     })
 
     app.get("/standings", function (req, res){
-        res.sendFile(path.join(__dirname, "../views/layouts/standings.html"));
+        res.render(path.join(__dirname, "../views/layouts/standings.pug"));
+    })
+    
+    app.get("/test", function (req, res){
+        res.render(path.join(__dirname, "../views/layouts/test.pug"));
     })
 
     //APIs so that user can pick games of the week
     app.get("/pickGames", function(req, res){
         jobs.options();
-        res.sendFile(path.join(__dirname, "../views/layouts/pickGames.html"));
+        res.render(path.join(__dirname, "../views/layouts/pickGames.pug"));
     })
 
     app.post('/api/pickGames', function(req,res){
@@ -126,7 +137,17 @@ module.exports = function(app){
         })
     })
 
-    //route to display login
+    //route to make user table in points
+    app.get("/api/points/:user", function(req, res){
+        db.results.findAll({
+            where: {
+                user: req.params.user,
+            }
+        })
+        .then(function(results){
+            res.json(results);
+        })
+    })
 
 
     //route to register a new user

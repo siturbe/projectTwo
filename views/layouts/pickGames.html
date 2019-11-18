@@ -97,7 +97,21 @@
                         </div>
                       </div>
         </div>
-        <script src="/assets/js/pickGames.js"></script>
+        <!-- <script src="/assets/js/pickGames.js"></script> -->
+
+        <script>
+            function loadScripts(sources) {
+                sources.forEach(src => {
+                    var script = document.createElement('script');
+                    script.src = src;
+                    script.async = false; //<-- the important part
+                    document.body.appendChild( script ); //<-- remember to append to body instead of head 
+                });
+            }
+
+            loadScripts(['/assets/js/deadline.js', '/assets/js/checkPicks.js', '/assets/js/pickGames.js']);
+        </script>
+
     </body>
 
 </html>

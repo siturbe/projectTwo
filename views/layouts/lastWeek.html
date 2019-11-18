@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -7,7 +7,7 @@
         <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <script src="https://code.jquery.com/jquery.js"></script>
         <link rel="stylesheet", href="/assets/css/login.css">
-        <Title> Premier League Pick'Em Standings</Title>
+        <Title> Premier League Pick'Em - Last Week</Title>
     </head>
 
     <body>
@@ -19,14 +19,14 @@
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/standings">Standings <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/standings">Standings </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/pickGames">Pick Games</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="/lastWeek">Last Week</a>
+                            <a class="nav-link active" href="/lastWeek">Last Week <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="/logout" id="logoutBtn">Log Out</a>
@@ -57,7 +57,7 @@
         
         
         <div id='container' class="container-fluid col-md-8 offset-md-2">
-            <div id="banner" class='container-fluid col-md-8 offset-md-2'>Premier League Pick'Em</div>
+                <div id="banner" class='container-fluid col-md-8 offset-md-2'>Premier League Pick'Em</div>
                 <div class="wrapper fadeInDown">
                         <div id="formContent">
                           <!-- Tabs Titles -->
@@ -68,25 +68,49 @@
                           </div>
                       
                           <!-- Standings Table -->
-                          <div class="fadeIn second" id="standingsTable">
-                              <h5>Select 'Pick Games' to Continue</h5>
-                              <h3>Season Rankings</h3>    
-                          </div>
-                          <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Player</th>
-                                    <th scope="col">Points</th>
-                                </tr>
-                            </thead>
-                            <tbody id="standingsTableBody">
+                          <div class="fadeIn second">
+                              <h3>Last Week's Results</h3>
+                              <div id="tableDiv"></div>
+                              <table class="table">
+                                  <thead>
+                                      <tr>
+                                          <th scope="col">Match Day</th>
+                                          <th scope="col">Home</th>
+                                          <th scope="col"></th>
+                                          <th scope="col">VS</th>
+                                          <th scope="col">Away</th>
+                                          <th scope="col"></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody id="optionsTableBody">
 
-                            </tbody>
-                            
-                        </table>
-                </div>
-            </div>
+                                  </tbody>
+                                  
+                              </table>
+
+                              <h3>Your Points By Week</h3>
+                              <div id="tableDiv"></div>
+                              <table class="table">
+                                  <thead>
+                                      <tr>
+                                          <th scope="col">Match Day</th>
+                                          <th scope="col">Points</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody id="pointsTableBody">
+
+                                  </tbody>
+                                  
+                              </table>
+
+
+                              
+                          </div>
+                      
+                        </div>
+                      </div>
         </div>
+        <!-- <script src="/assets/js/pickGames.js"></script> -->
 
         <script>
             function loadScripts(sources) {
@@ -98,7 +122,7 @@
                 });
             }
 
-            loadScripts(['/assets/js/calculatePoints.js','/assets/js/standingsFront.js']);
+            loadScripts(['/assets/js/lastweek.js']);
         </script>
 
     </body>
