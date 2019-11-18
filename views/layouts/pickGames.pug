@@ -1,4 +1,5 @@
 include layout
+        title Premier League Pick'Em - Pick Games
 
     body
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -13,46 +14,37 @@ include layout
                     li.nav-item
                         a.nav-link(href="/standings") Standings
                     li.nav-item
-                        a.nav-link(href="/pickGames") Pick Games
-                    li.nav-item
-                        a.nav-link-active(href="/lastweek") Last Week
+                        a.nav-link(href="/pickGames") Pick Games 
                             span.sr-only (current)
                     li.nav-item
+                        a.nav-link-active(href="/lastweek") Last Week
+                    li.nav-item
                         a.nav-link#logoutBtn(href="/logout") Log Out
-
+        
         .container-fluid.col-md-8.offset-md-2#container
             .container-fluid.col-md-8.offset-md-2#banner Premier League Pick'Em
-            .wrapper.fadeInDown
+            .wrapper.fadeInDwon
                 #formContent
 
-                //- Icon
+                //-Icon
                 .fadeIn.first
                     img#icon(src="/assets/images/PremierLeagueLogo.jpg" alt="User Icon")
 
-                //- Standings Table
-                .fadeIn.Second
-                    h3 Last Week's Results
+                //-Standings Table
+                .fadeIn.second
+                    h3 Select Three Winners
                     #tableDiv
+                        a.btn.btn-primary#startPickBtn(href="#") Display Choices
                     table.table
                         thead
                             tr
                                 th(scope="col") Match Day
-                                th(scope="col") Home
                                 th(scope="col")
+                                th(scope="col") Home
                                 th(scope="col") VS
                                 th(scope="col")
                                 th(scope="col") Away
-                        tbody#optionsTableBody
-
-                    h3 Your Points By Week
-                    #tableDiv
-                    table.table
-                        thead
-                            tr
-                                th(scope="col") Match Day
-                                th(scope="col") Points
-                        tbody#pointsTableBody
-
+                        tbody.optionsTableBody
         script(text/javascript)
             function loadScripts(sources) {
                 sources.forEach(src => {
@@ -62,5 +54,5 @@ include layout
                     document.body.appendChild( script ); //<-- remember to append to body instead of head 
                 });
             }
-        
-        
+
+            loadScripts(['/assets/js/deadline.js', '/assets/js/checkPicks.js', '/assets/js/pickGames.js']);
