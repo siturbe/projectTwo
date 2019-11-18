@@ -1,7 +1,5 @@
 include layout
-
-  body
-    #container.containter-fluid.col-md-8.offset-md-2
+  #container.containter-fluid.col-md-8.offset-md-2
       #banner.container-fluid.col-md-8.offset-md-2 Premier League Pick'Em
       .wrapper.fadeInDown
         #formContent
@@ -12,9 +10,9 @@ include layout
           form(action="" method="POST" role="form")
             input#username.fadeIn.second(type="text" name="username" placeholder="username")
             input#email.fadeIn.second(type="text" name="email" placeholder="email")
-            input#password.fadeIn.second(type="text" name="password" placeholder="password")
+            input#password.fadeIn.second(type="password" name="password" placeholder="password")
           br
-          a#registerBtn.btn.btn-primary(href="/standings") Register
+          a#registerBtn.btn.btn-primary(href="/standings") Register 
           a#loginBtn.btn.btn-primary(href="/standings") Login
 
-    script(src="/assets/js/loginFront.js")
+  script(src="/assets/js/loginFront.js")

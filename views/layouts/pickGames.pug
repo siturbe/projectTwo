@@ -1,58 +1,55 @@
+doctype html
 include layout
-        title Premier League Pick'Em - Pick Games
+title  Premier League Pick&apos;Em - Pick Games
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand(href='#')
+    img#icon2(src='/assets/images/LogoHead.jpg' alt='Navbar')
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+        //-navbar
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item
+        a.nav-link(href='/standings') Standings 
+      li.nav-item.active
+        a.nav-link(href='/pickGames')
+          | Pick Games
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='/lastWeek') Last Week
+      li.nav-item
+        a#logoutBtn.nav-link(href='/logout') Log Out
+#container.container-fluid.col-md-8.offset-md-2
+  #banner.container-fluid.col-md-8.offset-md-2 Premier League Pick&apos;Em
+  .wrapper.fadeInDown
+    #formContent
+      // Tabs Titles
+      // Icon
+      .fadeIn.first
+        img#icon(src='/assets/images/PremierLeagueLogo.jpg' alt='User Icon')
+      // Standings Table
+      .fadeIn.second
+        h3 Select Three Winners
+        #tableDiv
+          a#startPickBtn.btn.btn-primary(href='#') Display Choices
+        table.table
+          thead
+            tr
+              th(scope='col') Match Day
+              th(scope='col')
+              th(scope='col') Home
+              th(scope='col') VS
+              th(scope='col')
+              th(scope='col') Away
+          tbody#optionsTableBody
+script.
+    function loadScripts(sources) {
+    sources.forEach(src => {
+    var script = document.createElement('script');
+    script.src = src;
+    script.async = false; //<-- the important part
+    document.body.appendChild( script ); //<-- remember to append to body instead of head 
+    });
+    }
 
-    body
-        nav.navbar.navbar-expand-lg.navbar-light.bg-light
-            a.navbar-brand(href="#")img(src="/assets/images/LogoHead.jpg" alt="Navbar")#icon2
-            button.navbar-toggler(type="button" data-toggle="collapse" data-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
-                span.navbar-toggler-icon
-
-
-            //-navbar
-            .collapse.navbar-collapse#navbarSupportedContent
-                ul.navbar-nav.mr-auto
-                    li.nav-item
-                        a.nav-link(href="/standings") Standings
-                    li.nav-item
-                        a.nav-link(href="/pickGames") Pick Games 
-                            span.sr-only (current)
-                    li.nav-item
-                        a.nav-link-active(href="/lastweek") Last Week
-                    li.nav-item
-                        a.nav-link#logoutBtn(href="/logout") Log Out
-        
-        .container-fluid.col-md-8.offset-md-2#container
-            .container-fluid.col-md-8.offset-md-2#banner Premier League Pick'Em
-            .wrapper.fadeInDwon
-                #formContent
-
-                //-Icon
-                .fadeIn.first
-                    img#icon(src="/assets/images/PremierLeagueLogo.jpg" alt="User Icon")
-
-                //-Standings Table
-                .fadeIn.second
-                    h3 Select Three Winners
-                    #tableDiv
-                        a.btn.btn-primary#startPickBtn(href="#") Display Choices
-                    table.table
-                        thead
-                            tr
-                                th(scope="col") Match Day
-                                th(scope="col")
-                                th(scope="col") Home
-                                th(scope="col") VS
-                                th(scope="col")
-                                th(scope="col") Away
-                        tbody.optionsTableBody
-        script(text/javascript)
-            function loadScripts(sources) {
-                sources.forEach(src => {
-                    var script = document.createElement('script');
-                    script.src = src;
-                    script.async = false; //<-- the important part
-                    document.body.appendChild( script ); //<-- remember to append to body instead of head 
-                });
-            }
-
-            loadScripts(['/assets/js/deadline.js', '/assets/js/checkPicks.js', '/assets/js/pickGames.js']);
+loadScripts('/assets/js/deadline.js', '/assets/js/checkPicks.js', '/assets/js/pickGames.js')

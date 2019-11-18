@@ -1,92 +1,51 @@
-extends playLayout
+doctype html
+include layout
+  title  Premier League Pick&apos;Em Standings
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand(href='#')
+    img#icon2(src='/assets/images/LogoHead.jpg' alt='Navbar')
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+        //-navbar
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='/standings')
+          | Standings 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='/pickGames') Pick Games
+      li.nav-item
+        a.nav-link(href='/lastWeek') Last Week
+      li.nav-item
+        a#logoutBtn.nav-link(href='/logout') Log Out
 
-block content
-  .main.container
-    .row
-      .col-md-6.col-md-offset-3
-        h3.display-7.m-b-2 
-            thead
-                tr
-                    th Pick Options
-                tr
-                    th Pick One
-                    th Pick One Points
-                    th Pick Two
-                    th Pick Two Points
-                    th pick Three
-                    th pick Three Points
-                    th Points from Prior Weekend
-            tbody#tbodyTable
-        h3.display-4.m-b-2
-            thead 
-                tr
-                    th League Standings
-                tr
-                    th User
-                    th Points
-//- <!DOCTYPE html>
-//- <html lang="en">
-//- <head>
-//-     <meta charset="UTF-8">
-//-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-//- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-//- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-//- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-//-     <title>Standings</title>
-//- </head>
-//- <body>
-//-     <table>
-//-         <thead>
-//-             <tr>
-//-                 <th>Standings</th>
-//-             </tr>
-//-             <tr>
-//-                 <th>User Name</th>
-//-                 <th>Points</th>
-//-             </tr>
-//-         </thead>
-//-         <tbody id="tbodyTable">
+#container.container-fluid.col-md-8.offset-md-2
+  #banner.container-fluid.col-md-8.offset-md-2 Premier League Pick&apos;Em
+  .wrapper.fadeInDown
+    #formContent
+      //- Tabs Titles
+      //- Icon
+      .fadeIn.first
+        img#icon(src='/assets/images/PremierLeagueLogo.jpg' alt='User Icon')
+      //- Standings Table
+      #standingsTable.fadeIn.second
+        h5 Select &apos;Pick Games&apos; to Continue
+        h3 Season Rankings
+      table.table
+        thead
+          tr
+            th(scope='col') Player
+            th(scope='col') Points
+        tbody#standingsTableBody
 
-//-         </tbody>
-//-         <!-- append tr -->
-//-     </table>
-//- <script>
-//-     user = [{name:'sai',
-//-             points:23},
-//-             {name:'aj',
-//-             points: 30}];
-
-
-//-     for(let i = 0; i<user.length; i++){
-//-         let a = $('<tr></tr>');
-//-         let b = $('<td id="userName">'+user[i].name+'</td>');
-//-         let c = $('<td id="points">'+user[i].points+'</td>');
-
-//-         a.append(b);
-//-         a.append(c);
-//-         $('#tbodyTable').append(a);
-
-//-     }
-//- </script>
-    
-//- </body>
-//- </html>
-
-DOCTYPE html
-
-html
-    head
-        link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
-
-    body.container 
-        .col-lg-12.big.jumbotron TEST DIV
-            table
-            thead
-                tr
-                    th Standings
-                tr
-                    th User Name
-                    th Points
-            tbody#tbodyTable
-    footer
+script.
+  function loadScripts(sources) {
+  sources.forEach(src => {
+  var script = document.createElement('script');
+  script.src = src;
+  script.async = false; //<-- the important part
+  document.body.appendChild( script ); //<-- remember to append to body instead of head
+  });
+  }
+loadScripts(/assets/js/calculatePoints.js,/assets/js/standingsFront.js)
