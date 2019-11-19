@@ -26,13 +26,13 @@ module.exports = function(app){
         })
     
 
-    app.get("/api/standings", function(req,res){
-        db.standings.findAll({
-            order: [["points", "DESC"]]
-        }).then(function(results){
-            res.json(results);
-        })
-    })
+    // app.get("/api/standings", function(req,res){
+    //     db.standings.findAll({
+    //         order: [["points", "DESC"]]
+    //     }).then(function(results){
+    //         res.json(results);
+    //     })
+    // })
 
     app.get("/standings", function (req, res){
         res.render(path.join(__dirname, "../views/layouts/standings.pug"));
@@ -172,10 +172,7 @@ module.exports = function(app){
             res.json(result);
         });
 
-        db.standings.create({
-            name: req.body.name,
-            points: 0,           
-        })
+
     });
 
 }
