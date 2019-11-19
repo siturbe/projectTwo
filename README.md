@@ -50,10 +50,10 @@
 
 
 ### Developmental features:
- User authorization
- User enabled features
- Record points based on matches
- Store match scores
+ * User authorization
+ * User enabled features
+ * Record points based on matches
+ * Store match scores
 
 ### Rules:
 * Join League
