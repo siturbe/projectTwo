@@ -12,9 +12,9 @@ $('#startPickBtn').on("click", function(event){
     $.get("/api/pickGames", function(data){
         console.log(data);
         let matchday;
-        runLoop();
+        runLoop(data);
 
-        async function runLoop(){
+        async function runLoop(data){
             matchday = await data[0].matchday;
             console.log(deadline);
             if(matchday == deadline){
