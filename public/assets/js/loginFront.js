@@ -1,4 +1,4 @@
-
+localStorage.removeItem('PLPickUser');
 
 //Code to register new user
 $("#registerBtn").on("click", function (event){
@@ -17,24 +17,41 @@ $("#registerBtn").on("click", function (event){
                     document.location.reload();
                 }
             }
+            if(nameAlreadyUsed == false){
+                console.log("Name is good to use"); 
+                let username = {
+                    name: $("#username").val(),
+                    email: $("#email").val(),
+                    password: $("#password").val(),
+                }
+        
+                console.log(username);
+                let currentUser = $("#username").val();
+                localStorage.setItem('PLPickUser', currentUser);
+                $.post("/api/newUser", username)
+                    .then(function(data){
+                        console.log(data);
 
-            // console.log("Name is good to use"); 
-            // let username = {
-            //     name: $("#username").val(),
-            //     email: $("#email").val(),
-            //     password: $("#password").val(),
-            // }
-    
-            // console.log(username);
-            // let currentUser = $("#username").val();
-            // // currentUserGlobal = currentUser;
-            // localStorage.setItem('PLPickUser', currentUser);
-            // $.post("/api/newUser", username)
-            //     .then(function(data){
-            //         console.log(data);
-            //         window.location.assign(href='/standings');
-            //     })
+                        let userForResults ={
+                            user: $("#username").val(),
+                            matchDay: 0,
+                            pick1: null,
+                            pick1points: 0,
+                            pick2: null,
+                            pick2points: 0,
+                            pick3: null,
+                            pick3points: 0,
+                            totalPoints: 0,
+                        }
             
+                        $.post('/api/compileResults', userForResults)
+                            .then(function(data){
+                                console.log('New User Added to work with Results')
+                            })
+
+                        window.location.assign(href='/standings');
+                    })
+                }
                 
             
         } else {
@@ -51,9 +68,27 @@ $("#registerBtn").on("click", function (event){
             $.post("/api/newUser", username)
                 .then(function(data){
                     console.log(data);
+
+                    let userForResults ={
+                        user: $("#username").val(),
+                        matchDay: 0,
+                        pick1: null,
+                        pick1points: 0,
+                        pick2: null,
+                        pick2points: 0,
+                        pick3: null,
+                        pick3points: 0,
+                        totalPoints: 0,
+                    }
+        
+                    $.post('/api/compileResults', userForResults)
+                        .then(function(data){
+                            console.log('New User Added to work with Results')
+                        })
+
                     window.location.assign(href='/standings');
                 })
-            
+
                 
         }
     })  
@@ -89,3 +124,19 @@ $("#loginBtn").on("click", function (event){
 
 })
 
+ // let userForResults ={
+            //     user: $("#username").val(),
+            //     matchDay: 0,
+            //     pick1: null,
+            //     pick1points: null,
+            //     pick2: null,
+            //     pick2points: null,
+            //     pick3: null,
+            //     pick3points: null,
+            //     totalPoints: 0,
+            // }
+
+            // $.post('/api/compileResults', userForResults)
+            //     .then(function(data){
+            //         console.log('New User Added to work with Results')
+            //     })

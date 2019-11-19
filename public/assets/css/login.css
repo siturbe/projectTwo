@@ -296,3 +296,7 @@ html {
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
   }
+
+  #registerBtn{
+    margin-right: 3px;
+  }

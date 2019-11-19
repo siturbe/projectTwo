@@ -16,20 +16,12 @@ module.exports = function(app){
         })
 
     app.get("/logout", function(req,res) {
-<<<<<<< HEAD
-            res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
-=======
             res.render(path.join(__dirname, "../views/layouts/home.pug"));
->>>>>>> e2462207f29098b0cbbb8a0d20e5d2958bdc34a3
             
         })
 
     app.get("/lastWeek", function(req,res) {
-<<<<<<< HEAD
-            res.sendFile(path.join(__dirname, "../views/layouts/lastWeek.html"));
-=======
             res.render(path.join(__dirname, "../views/layouts/lastWeek.pug"));
->>>>>>> e2462207f29098b0cbbb8a0d20e5d2958bdc34a3
             
         })
     
@@ -79,6 +71,18 @@ module.exports = function(app){
     app.get('/api/getPicks', function(req, res){
         jobs.options();
         db.picks.findAll()
+        .then(function(results){
+            res.json(results);
+        })
+    })
+
+    //API to check if individual has picked
+    app.get('/api/getPicks/:user', function(req,res){
+        db.picks.findAll({
+            where: {
+                user: req.params.user
+            }
+        })
         .then(function(results){
             res.json(results);
         })

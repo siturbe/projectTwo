@@ -62,9 +62,7 @@ $.get('/api/getScores', function(data1){
             let query3;
             let filterResult3;
 
-            
-    
-        
+                    
         
             //FIRST GET PICK1 Results++++++++++++++++++++++++++++++++++++++++++
                 pick1 = userPicks[i].pick1;
