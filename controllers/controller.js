@@ -43,8 +43,8 @@ module.exports = function(app){
     })
 
     //APIs so that user can pick games of the week
-    app.get("/pickGames", async function(req, res){
-        await jobs.options();
+    app.get("/pickGames", function(req, res){
+        jobs.options();
         res.render(path.join(__dirname, "../views/layouts/pickGames.pug"));
     })
 
