@@ -1,21 +1,22 @@
 doctype html
 include layout
-  title  Premier League Pick&apos;Em - Last Week
+title  Premier League Pick&apos;Em - Pick Games
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   a.navbar-brand(href='#')
     img#icon2(src='/assets/images/LogoHead.jpg' alt='Navbar')
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
+        //-navbar
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item
         a.nav-link(href='/standings') Standings 
-      li.nav-item
-        a.nav-link(href='/pickGames') Pick Games
-      li.nav-item
-        a.nav-link.active(href='/lastWeek')
-          | Last Week 
+      li.nav-item.active
+        a.nav-link(href='/pickGames')
+          | Pick Games
           span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='/lastWeek') Last Week
       li.nav-item
         a#logoutBtn.nav-link(href='/logout') Log Out
 #container.container-fluid.col-md-8.offset-md-2
@@ -28,34 +29,27 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         img#icon(src='/assets/images/PremierLeagueLogo.jpg' alt='User Icon')
       // Standings Table
       .fadeIn.second
-        h3 Last Week&apos;s Results
+        h3 Select Three Winners
         #tableDiv
+          a#startPickBtn.btn.btn-primary(href='#') Display Choices
         table.table
           thead
             tr
               th(scope='col') Match Day
+              th(scope='col')
               th(scope='col') Home
-              th(scope='col')
               th(scope='col') VS
-              th(scope='col') Away
               th(scope='col')
+              th(scope='col') Away
           tbody#optionsTableBody
-        h3 Your Points By Week
-        #tableDiv
-        table.table
-          thead
-            tr
-              th(scope='col') Match Day
-              th(scope='col') Points
-          tbody#pointsTableBody
-// <script src="/assets/js/pickGames.js"></script>
 script.
-  function loadScripts(sources) {
-  sources.forEach(src => {
-  var script = document.createElement('script');
-  script.src = src;
-  script.async = false; //<-- the important part
-  document.body.appendChild( script ); //<-- remember to append to body instead of head
-  });
-  }
-  loadScripts(['/assets/js/lastweek.js']);
+    function loadScripts(sources) {
+    sources.forEach(src => {
+    var script = document.createElement('script');
+    script.src = src;
+    script.async = false; //<-- the important part
+    document.body.appendChild( script ); //<-- remember to append to body instead of head 
+    });
+    }
+
+loadScripts('/assets/js/deadline.js', '/assets/js/checkPicks.js', '/assets/js/pickGames.js')
