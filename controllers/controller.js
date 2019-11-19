@@ -8,7 +8,7 @@ module.exports = function(app){
     let currentUserID;
     //Route to display home page
     app.get("/", function(req,res) {
-        res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
+        res.render(path.join(__dirname, "../views/layouts/home.pug"));
         // jobs.lastWeek();
         // jobs.options();
         // jobs.matchDays();
@@ -16,12 +16,20 @@ module.exports = function(app){
         })
 
     app.get("/logout", function(req,res) {
+<<<<<<< HEAD
             res.sendFile(path.join(__dirname, "../views/layouts/home.html"));
+=======
+            res.render(path.join(__dirname, "../views/layouts/home.pug"));
+>>>>>>> e2462207f29098b0cbbb8a0d20e5d2958bdc34a3
             
         })
 
     app.get("/lastWeek", function(req,res) {
+<<<<<<< HEAD
             res.sendFile(path.join(__dirname, "../views/layouts/lastWeek.html"));
+=======
+            res.render(path.join(__dirname, "../views/layouts/lastWeek.pug"));
+>>>>>>> e2462207f29098b0cbbb8a0d20e5d2958bdc34a3
             
         })
     
@@ -35,13 +43,17 @@ module.exports = function(app){
     })
 
     app.get("/standings", function (req, res){
-        res.sendFile(path.join(__dirname, "../views/layouts/standings.html"));
+        res.render(path.join(__dirname, "../views/layouts/standings.pug"));
+    })
+    
+    app.get("/test", function (req, res){
+        res.render(path.join(__dirname, "../views/layouts/test.pug"));
     })
 
     //APIs so that user can pick games of the week
     app.get("/pickGames", function(req, res){
         jobs.options();
-        res.sendFile(path.join(__dirname, "../views/layouts/pickGames.html"));
+        res.render(path.join(__dirname, "../views/layouts/pickGames.pug"));
     })
 
     app.post('/api/pickGames', function(req,res){
