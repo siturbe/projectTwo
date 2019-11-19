@@ -69,7 +69,7 @@ module.exports = function(app){
     });
     //APIs used to calculate points
     app.get('/api/getPicks', function(req, res){
-        jobs.options();
+        // jobs.options();
         db.picks.findAll()
         .then(function(results){
             res.json(results);
