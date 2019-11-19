@@ -1,5 +1,6 @@
 //code to populate table
 //Change starts now - if deletes, then back to prior state
+//Second series of changes
 
 console.log(currentUser);
 
@@ -16,17 +17,22 @@ $('#startPickBtn').on("click", function(event){
         async function runLoop(){
             matchday = await data[0].matchday;
             console.log(deadline);
-            populatePickGames(data);
-
-        }
-
-        function populatePickGames(data){
             if(matchday == deadline){
                 confirm('Deadline for picks has already passed for this week.');
                 window.location.assign(href='/standings');
 
             } else if (alreadyPicked == false){
+                populatePickGames(data);
+            } else {
+                confirm('Your picks have already been submitted for this week.');
+                window.location.assign(href='/standings');
+            }
+        }
 
+        
+            
+
+            function populatePickGames(data){
                 //code to populate table of choices
                 for(let i=0; i<data.length; i++){
                     let matchday = data[i].matchday;
@@ -112,10 +118,7 @@ $('#startPickBtn').on("click", function(event){
                     })
 
                 })
-            } else {
-                confirm('Your picks have already been submitted for this week.');
-                window.location.assign(href='/standings');
-            }
+            
         }
         
  
