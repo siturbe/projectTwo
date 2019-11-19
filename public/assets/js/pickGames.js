@@ -11,11 +11,12 @@ $('#startPickBtn').on("click", function(event){
 
     $.get("/api/pickGames", function(data){
         console.log(data);
-        let matchday;
+        let matchdayGlobal;
         runLoop(data);
 
         async function runLoop(data){
-            matchday = await data[0].matchday;
+            let matchday = await data[0].matchday;
+            matchdayGlobal = matchday;
             console.log(deadline);
             if(matchday == deadline){
                 confirm('Deadline for picks has already passed for this week.');
@@ -103,7 +104,7 @@ $('#startPickBtn').on("click", function(event){
 
                         let newPicks = {
                             user: currentUser,
-                            matchday: matchday,
+                            matchday: matchdayGlobal,
                             pick1: pick1,
                             pick2: pick2,
                             pick3: pick3
