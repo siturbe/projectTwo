@@ -60,7 +60,7 @@ for(let i=0; i<deadlineDates.length; i++){
     }
 }
 
-let deadline = String(datesNotPassed[1]);
+let deadline = String(datesNotPassed[1]-1);
 console.log("deadline=" + deadline);
 
 

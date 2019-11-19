@@ -12,11 +12,11 @@ $('#startPickBtn').on("click", function(event){
         let matchday = data[0].matchday;
         console.log(deadline);
 
-        if(matchday = deadline){
+        if(matchday == deadline){
             confirm('Deadline for picks has already passed for this week.');
             window.location.assign(href='/standings');
 
-        } else if (alreadyPicked = false){
+        } else if (alreadyPicked == false){
 
             //code to populate table of choices
             for(let i=0; i<data.length; i++){
