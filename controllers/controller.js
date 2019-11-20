@@ -45,7 +45,7 @@ module.exports = function(app){
 
     //APIs so that user can pick games of the week
     app.get("/pickGames", function(req, res){
-        jobs.options();
+        // jobs.options();
         res.render(path.join(__dirname, "../views/layouts/pickGames.pug"));
     })
 
@@ -177,6 +177,10 @@ module.exports = function(app){
 
     });
 
+    //route to populate options table on login
+    app.get('/api/populateOptions', function(req, res){
+        jobs.options();
+    })
 
 }
 
