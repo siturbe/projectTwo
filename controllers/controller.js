@@ -35,7 +35,7 @@ module.exports = function(app){
     // })
 
     app.get("/standings", function (req, res){
-        jobs.options();
+        // jobs.options();
         res.render(path.join(__dirname, "../views/layouts/standings.pug"));
     })
     
@@ -70,7 +70,7 @@ module.exports = function(app){
     });
     //APIs used to calculate points
     app.get('/api/getPicks', function(req, res){
-        // jobs.options();
+        jobs.options();
         db.picks.findAll()
         .then(function(results){
             res.json(results);
