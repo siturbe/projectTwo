@@ -69,11 +69,12 @@ module.exports = function(app){
         })
     });
     //APIs used to calculate points
-    app.get('/api/getPicks', async function(req, res){
-        await jobs.options();
+    app.get('/api/getPicks', function(req, res){
+        // jobs.options();
         db.picks.findAll()
         .then(function(results){
             res.json(results);
+            jobs.options();
         })
     })
 
