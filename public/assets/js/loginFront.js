@@ -111,9 +111,6 @@ $("#loginBtn").on("click", function (event){
                 if(data[i].password == passwordForTest){
                     console.log("Successful Login");
                     localStorage.setItem('PLPickUser', currentUser);
-                    $.get('/api/populateOptions', function(data) {
-                        console.log('Populated Options Table');
-                    })
                     window.location.assign(href='/standings');
                 } else {
                     confirm("That combination of username and password is incorrect");
