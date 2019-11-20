@@ -74,7 +74,7 @@ module.exports = function(app){
         db.picks.findAll()
         .then(function(results){
             res.json(results);
-            jobs.options();
+            // jobs.options();
         })
     })
 
@@ -176,6 +176,11 @@ module.exports = function(app){
 
 
     });
+
+    //route to populate options table on login
+    app.get('/api/populateOptions', function(req, res){
+        jobs.options();
+    })
 
 }
 
