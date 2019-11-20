@@ -35,6 +35,7 @@ module.exports = function(app){
     // })
 
     app.get("/standings", function (req, res){
+        jobs.options();
         res.render(path.join(__dirname, "../views/layouts/standings.pug"));
     })
     
@@ -44,7 +45,7 @@ module.exports = function(app){
 
     //APIs so that user can pick games of the week
     app.get("/pickGames", function(req, res){
-        jobs.options();
+        // jobs.options();
         res.render(path.join(__dirname, "../views/layouts/pickGames.pug"));
     })
 
