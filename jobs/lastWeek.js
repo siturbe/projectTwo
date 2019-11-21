@@ -29,8 +29,8 @@ module.exports = function popluateLastWeek(){
             "url":"https://heisenbug-premier-league-live-scores-v1.p.rapidapi.com/api/premierleague",
             "headers":{
             "content-type":"application/octet-stream",
-            "x-rapidapi-host": process.env.API_HOST,
-            "x-rapidapi-key": process.env.API_KEY
+            "x-rapidapi-host": "heisenbug-premier-league-live-scores-v1.p.rapidapi.com",
+            "x-rapidapi-key": "e4bd1d4763mshbadb182061cbec8p14ada1jsna099cc6dbfa1"
             },"params":{
             "matchday": lastMatchDay
             }

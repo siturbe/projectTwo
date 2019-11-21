@@ -9,8 +9,8 @@ module.exports = function(app){
     //Route to display home page
     app.get("/", function(req,res) {
         res.render(path.join(__dirname, "../views/layouts/home.pug"));
-        // jobs.lastWeek();
-        // jobs.options();
+        jobs.lastWeek();
+        jobs.options();
         // jobs.matchDays();
         
         })
@@ -47,11 +47,11 @@ module.exports = function(app){
     app.get("/pickGames", function(req, res){
         // jobs.options();
         res.render(path.join(__dirname, "../views/layouts/pickGames.pug"));
-        jobs.options()
+        // jobs.options()
     })
 
     app.post('/api/pickGames', function(req,res){
-        jobs.lastWeek();
+        // jobs.lastWeek();
         db.picks.create({
             user: req.body.user,
             matchDay: req.body.matchday,
