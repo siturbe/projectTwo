@@ -22,6 +22,7 @@ module.exports = function popluateLastWeek(){
     const matchdayINT = parseInt(matchday);
     const lastMatchDayINT = matchdayINT -1;
     const lastMatchDay = String(lastMatchDayINT);
+    const keys = require('../controllers/keys.js');
 
     db.lastweek.truncate().then(function(){
         axios({
@@ -29,8 +30,8 @@ module.exports = function popluateLastWeek(){
             "url":"https://heisenbug-premier-league-live-scores-v1.p.rapidapi.com/api/premierleague",
             "headers":{
             "content-type":"application/octet-stream",
-            "x-rapidapi-host": "heisenbug-premier-league-live-scores-v1.p.rapidapi.com",
-            "x-rapidapi-key": "e4bd1d4763mshbadb182061cbec8p14ada1jsna099cc6dbfa1"
+            "x-rapidapi-host": keys.PLscores.host,
+            "x-rapidapi-key": keys.PLscores.secret
             },"params":{
             "matchday": lastMatchDay
             }
