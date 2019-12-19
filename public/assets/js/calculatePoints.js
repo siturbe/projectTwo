@@ -8,6 +8,7 @@ $.get('/api/getScores', function(data1){
     $.get('/api/getPicks', function(data2){
         userPicks = data2; 
         let everyonePickPoints = [];
+
         function search(matchesWithScores){
             return Object.keys(this).every((key) => matchesWithScores[key] === this[key]);
         } 
@@ -40,7 +41,7 @@ $.get('/api/getScores', function(data1){
 
 
         //Function filters picks and matches and caclulates points earned
-        function populateUserResults(num){
+        async function populateUserResults(num){
             let pick1Results=[];
             let pick2Results=[];
             let pick3Results=[];
@@ -62,18 +63,23 @@ $.get('/api/getScores', function(data1){
             let query3;
             let filterResult3;
 
+        
+
                     
         
             //FIRST GET PICK1 Results++++++++++++++++++++++++++++++++++++++++++
                 pick1 = userPicks[i].pick1;
+                console.log("pick1: " + pick1)
                 query1 = {team2: pick1, matchday: userPicks[i].matchDay}
-                filterResult1 = matchesWithScores.filter(search, query1);
+                console.log("query1: "+ query1.team2 + "&" + query1.matchday)
+                filterResult1 = await matchesWithScores.filter(search, query1);
                 
 
                 if(filterResult1.length == 0){
                     pick1 = userPicks[i].pick1;
-                    query1 = {team1: pick1, matchday: userPicks[i].matchDay}
-                    filterResult1 = matchesWithScores.filter(search, query1);
+                    query1 = {team1: pick1, matchday: userPicks[i].matchDay};
+                    filterResult1 = await matchesWithScores.filter(search, query1);
+                    console.log("filter: " + filterResult1);
 
                     result1 = {
                         user: userPicks[i].user,
@@ -98,13 +104,13 @@ $.get('/api/getScores', function(data1){
             //NEXT GET PICK2 RESULTS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 pick2 = userPicks[i].pick2;
                 query2 = {team2: pick2, matchday: userPicks[i].matchDay}
-                filterResult2 = matchesWithScores.filter(search, query2);
+                filterResult2 = await matchesWithScores.filter(search, query2);
                 
 
                 if(filterResult2.length == 0){
                     pick2 = userPicks[i].pick2;
                     query2 = {team1: pick2, matchday: userPicks[i].matchDay}
-                    filterResult2 = matchesWithScores.filter(search, query2);
+                    filterResult2 = await matchesWithScores.filter(search, query2);
 
                     result2 = {
                         user: userPicks[i].user,
@@ -129,13 +135,13 @@ $.get('/api/getScores', function(data1){
             ///NEXT GET PICK3 RESULTS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 pick3 = userPicks[i].pick3;
                 query3 = {team2: pick3, matchday: userPicks[i].matchDay}
-                filterResult3 = matchesWithScores.filter(search, query3);
+                filterResult3 = await matchesWithScores.filter(search, query3);
                 
 
                 if(filterResult3.length == 0){
                     pick3 = userPicks[i].pick3;
                     query3 = {team1: pick3, matchday: userPicks[i].matchDay}
-                    filterResult3 = matchesWithScores.filter(search, query3);
+                    filterResult3 = await matchesWithScores.filter(search, query3);
 
                     result3 = {
                         user: userPicks[i].user,
